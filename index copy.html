@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sim</title>
+    <style>
+        body{
+            text-align: center;
+            font: normal 20pt Arial;
+        }
+        input{
+            width: fit-content;
+            font: 20pt Arial;
+
+        }
+        #resultado{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20PX;
+        }
+        img{
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        #vencedor{
+            margin: auto;
+            margin-top: 15px;
+            padding: 5px;
+            font-size: 30pt;
+            border: 2px solid black;
+            width: fit-content;
+            border-radius: 10px;
+            background-color: lightgray;
+        }
+        .placar{
+            margin: 20px;
+            font-size: 30pt;
+        }
+        #area{
+            border: 3px solid black;
+            padding: 15px;
+            width: fit-content;
+            margin: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section id="area">
+        <h1 id="rodadas">Rodadas: 0</h1>
+        <input type="button" value="pedra" onclick="pedra()">
+        <input type="button" value="papel" onclick="papel()">
+        <input type="button" value="tesoura" onclick="tesoura()">
+        <div id="resultado">
+            <span id="placar1" class="placar" style="color: blue;">0</span>
+            <img src="imagens/papel.png" id="img1">
+            <span style="margin: 10px;">X</span>
+            <img src="imagens/pedra.png" id="img2">
+            <span id="placar2" class="placar" style="color: red;">0</span>
+        </div>
+        <section id="vencedor">Você ganhou</section>
+    </section>
+    <script>
+        var img1 = document.getElementById('img1')
+        var img2 = document.getElementById('img2')
+        var placar1 = 0
+        var placar2 = 0
+        var rodadas = 0
+        // PEDRA---------------------------------------------------------------
+        function pedra()
+        {
+            rodadas++
+            var oponente = null
+            var resultado = null
+            var vencedor = null
+            switch (Math.floor(Math.random() * 3))
+            {
+                case 0:
+                    oponente = "Pedra";
+                    vencedor = "Empate";
+                    img2.setAttribute("src", "imagens/pedra.png");
+                    break;
+                case 1:
+                    oponente = "Papel";
+                    vencedor = "Você perdeu";
+                    placar2 += 1;
+                    img2.setAttribute("src", "imagens/papel.png");
+                    break;
+                case 2:
+                    oponente = "Tesoura";
+                    vencedor = "Você ganhou";
+                    placar1 += 1;
+                    img2.setAttribute("src", "imagens/tesoura.png");
+                    break;
+            }
+           img1.setAttribute("src", "imagens/pedra.png")
+           document.getElementById('vencedor').innerText = vencedor
+           document.getElementById('placar1').innerText = placar1
+           document.getElementById('placar2').innerText = placar2
+           document.getElementById('rodadas').innerHTML = `Rodadas: ${rodadas}`
+        // PAPEL---------------------------------------------------------------
+        }
+        function papel()
+        {
+            rodadas++
+            var oponente = null
+            var resultado = null
+            var vencedor = null
+            switch (Math.floor(Math.random() * 3))
+            {
+                case 0:
+                    oponente = "Pedra";
+                    vencedor = "Você ganhou";
+                    placar1 ++;
+                    img2.setAttribute("src", "imagens/pedra.png");
+                    break;
+                case 1:
+                    oponente = "Papel";
+                    vencedor = "Empate";
+                    img2.setAttribute("src", "imagens/papel.png");
+                    break;
+                case 2:
+                    oponente = "Tesoura";
+                    vencedor = "Você perdeu";
+                    placar2++;
+                    img2.setAttribute("src", "imagens/tesoura.png");
+                    break;
+            }
+            img1.setAttribute("src", "imagens/papel.png")
+           document.getElementById('vencedor').innerText = vencedor
+           document.getElementById('placar1').innerText = placar1
+           document.getElementById('placar2').innerText = placar2
+           document.getElementById('rodadas').innerHTML = `Rodadas: ${rodadas}`
+        }
+        // TESOURA -------------------------------------------------------
+        function tesoura()
+        {
+            rodadas++
+            var oponente = null
+            var resultado = null
+            var vencedor = null
+            switch (Math.floor(Math.random() * 3))
+            {
+                case 0:
+                    oponente = "Pedra";
+                    vencedor = "Você perdeu";
+                    placar2++;
+                    img2.setAttribute("src", "imagens/pedra.png");
+                    break;
+                case 1:
+                    oponente = "Papel";
+                    vencedor = "Você ganhou";
+                    placar1++;
+                    img2.setAttribute("src", "imagens/papel.png");
+                    break;
+                case 2:
+                    oponente = "Tesoura";
+                    vencedor = "Empate";
+                    img2.setAttribute("src", "imagens/tesoura.png"); 
+                    break;
+            }
+            img1.setAttribute("src", "imagens/tesoura.png");
+           document.getElementById('vencedor').innerText = vencedor
+           document.getElementById('placar1').innerText = placar1
+           document.getElementById('placar2').innerText = placar2
+           document.getElementById('rodadas').innerHTML = `Rodadas: ${rodadas}`
+        }
+        if(placar1 > placar2){
+            document.body.style.backgroundColor = "blue"
+        }
+    </script>
+</body>
+</html>
