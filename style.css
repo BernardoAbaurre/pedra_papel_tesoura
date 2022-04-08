@@ -1,32 +1,39 @@
-body{
+body
+{
     text-align: center;
     font: normal 20pt Arial;
 }
-input{
+input
+{
     width: fit-content;
     font: 20pt Arial;
 }
-#reset{
+#reset
+{
     margin: 10px;
 }
-#resultado{
+#resultado
+{
     display: flex;
     align-content: center;
     align-items: center;
     justify-content: center;
     margin-top: 20PX;
 }
-img{
+img
+{
     width: 145px;
     height: 145px;
 }
-.imagem{
+.imagem
+{
     width: 154px;
     height: 154px;
     border: 2px solid black;
     border-radius: 10px;
 }
-#vencedor{
+#vencedor
+{
     margin: auto;
     margin-top: 15px;
     padding: 5px;
@@ -36,11 +43,13 @@ img{
     border-radius: 10px;
     background-color: lightgray;
 }
-.placar{
+.placar
+{
     margin: 20px;
     font-size: 30pt;
 }
-#area{
+#area
+{
     border: 3px solid black;
     padding: 15px;
     width: fit-content;
