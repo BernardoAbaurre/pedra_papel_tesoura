@@ -4,67 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sim</title>
-    <style>
-        body{
-            text-align: center;
-            font: normal 20pt Arial;
-        }
-        input{
-            width: fit-content;
-            font: 20pt Arial;
-
-        }
-        #resultado{
-            display: flex;
-            align-content: center;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20PX;
-        }
-        img{
-            border: 2px solid black;
-            border-radius: 10px;
-        }
-        #vencedor{
-            margin: auto;
-            margin-top: 15px;
-            padding: 5px;
-            font-size: 30pt;
-            border: 2px solid black;
-            width: fit-content;
-            border-radius: 10px;
-            background-color: lightgray;
-        }
-        .placar{
-            margin: 20px;
-            font-size: 30pt;
-        }
-        #area{
-            border: 3px solid black;
-            padding: 15px;
-            width: fit-content;
-            margin: auto;
-            border-radius: 10px;
-            background-color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>Pedra Papel Tesoura</title>
 </head>
 <body>
     <section id="area">
         <h1 id="rodadas">Rodadas: 0</h1>
-        <input type="button" value="reset" onclick="reset()" id="reset"><br>
         <input type="button" value="pedra" onclick="pedra()">
         <input type="button" value="papel" onclick="papel()">
         <input type="button" value="tesoura" onclick="tesoura()">
         <div id="resultado">
             <span id="placar1" class="placar" style="color: blue;">0</span>
-            <img src="imagens/papel.png" id="img1">
+            <nav class="imagem">
+                <img src="" id="img1" style="display: none;">
+            </nav>
             <span style="margin: 10px;">X</span>
-            <img src="imagens/pedra.png" id="img2">
+            <nav class="imagem">
+                <img src="" id="img2" style="display: none;">
+            </nav>
             <span id="placar2" class="placar" style="color: red;">0</span>
         </div>
-        <section id="vencedor">Você ganhou</section>
+        <section id="vencedor" style="display: none;"></section>
+        <input type="button" value="reset" onclick="reset()" id="reset"><br>
     </section>
     <script>
         var img1 = document.getElementById('img1')
@@ -77,6 +38,9 @@
         {
             img1.setAttribute("src","imagens/loading.gif")
             img2.setAttribute("src","imagens/loading.gif")
+            img1.style.display='inline'
+            img2.style.display='inline'
+            document.getElementById('vencedor').style.display = 'block'
             setTimeout(run, 500)
             function run()
             {
@@ -130,9 +94,13 @@
         {
             img1.setAttribute("src","imagens/loading.gif")
             img2.setAttribute("src","imagens/loading.gif")
+            img1.style.display='inline'
+            img2.style.display='inline'
+            document.getElementById('vencedor').style.display = 'block'
             setTimeout(run, 500)
             function run()
             {
+                
                 rodadas++
                 var oponente = null
                 var resultado = null
@@ -181,6 +149,9 @@
         {
             img1.setAttribute("src","imagens/loading.gif")
             img2.setAttribute("src","imagens/loading.gif")
+            img1.style.display='inline'
+            img2.style.display='inline'
+            document.getElementById('vencedor').style.display = 'block'
             setTimeout(run, 500)
             function run()
             {
@@ -226,6 +197,21 @@
                     document.body.style.backgroundColor = "white"
                 }
             }
+        }
+        // Reset-----------------------------------------------------------
+        function reset()
+        {
+            placar1 = 0
+            placar2 = 0
+            rodadas = 0
+            document.getElementById('placar1').innerText = placar1
+            document.getElementById('placar2').innerText = placar2
+            document.getElementById('rodadas').innerHTML = `Rodadas: ${rodadas}`
+            document.body.style.backgroundColor = "white"
+            img1.style.display='none'
+            img2.style.display='none'
+            document.getElementById('vencedor').style.display = 'none'
+
         }
     </script>
 </body>
